@@ -22,7 +22,7 @@ class ClientController extends Controller
         return "Informations saved, your ID Client : " + $client -> id;
     }
 
-    public function addproduct($idClient, $idProduit){
+    public function addproduct($idClient, Request $request){
         // Ajoute les produits aux panier
 
     }

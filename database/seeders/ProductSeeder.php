@@ -15,11 +15,9 @@ class ProductSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'description'=> 'Pizza_1',
-        ],[
-            'description'=> 'Pizza_2',
-        ],[
-            'description'=> 'Pizza_3',
+            ['description'=> 'Pizza_1'],
+            ['description'=> 'Pizza_2'],
+            ['description'=> 'Pizza_3']
         ]);
     }
 }
