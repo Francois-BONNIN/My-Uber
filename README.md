@@ -11,18 +11,22 @@
 
 ## 3. Requêtes :
 
+#### Liste de tous les articles :
+```| GET|HEAD | api/products      | App\Http\Controllers\ProductController@listProducts   |```
+
+
 ### API Client :
 #### Ajouter des produits au panier (passer un produit en paramètre (format json)): 
-```| POST     | api/clients/product        | App\Http\Controllers\ClientController@addproduct        |```
+```| POST     | api/client/product            | App\Http\Controllers\ClientController@addproduct        |```
 
-#### Saisir l'adresse + numéro de téléphone (passer les arguments en paramètre (format json)) :
-```| PUT      | api/clients/profile                   | App\Http\Controllers\ClientController@createprofile     |```
+#### Saisir l'adresse + numéro de téléphone (passer les arguments en paramètre (format x-www-form-urlencoded)) :
+```| PUT      | api/client/profile            | App\Http\Controllers\ClientController@createprofile     |```
 
 #### Valider la commande:
-```| POST     | api/clients/order                     | App\Http\Controllers\ClientController@validateOrder     |```
+```| POST     | api/client/order              | App\Http\Controllers\ClientController@validateOrder     |```
 
 #### Consulter l'état de sa commande :
-```| GET|HEAD | api/clients/order/status       | App\Http\Controllers\ClientController@viewOrderClient   |```
+```| GET|HEAD | api/client/order/status       | App\Http\Controllers\ClientController@viewOrderClient   |```
 
 <hr>
 

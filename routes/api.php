@@ -4,31 +4,19 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShipperController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
+Route::get('products', [ProductController::class, 'listProducts']); // Liste de tous les articles
 
+Route::post('client/product/', [ClientController::class, 'addproduct']); // Ajouter un produit au panier
+Route::put('client/profile',[ClientController::class, 'createprofile']); // Saisir adresse + numéro de téléphone
+Route::post('client/order', [ClientController::class, 'validateOrder']); // Valider la commande
+Route::get('client/order/status', [ClientController::class, 'viewOrderClient']); // Consulter l'état de sa commande
 
+Route::get('seller/order', [SellerController::class, 'viewOrderSeller']); // Voir les commandes passées par les clients
+Route::put('seller/order/{idOrder}/{process}', [SellerController::class, 'processOrder']); // Traiter une commande ({process} = accept/refuse/ready)
 
-Route::post('clients/product/', [ClientController::class, 'addproduct']); // ajouter un produit au panier
-Route::put('clients/profile',[ClientController::class, 'createprofile']); // saisir adresse + numéro de téléphone
-Route::post('clients/order', [ClientController::class, 'validateOrder']); //
-Route::get('clients/order/status', [ClientController::class, 'viewOrderClient']); //
-
-Route::get('seller/order', [SellerController::class, 'viewOrderSeller']);
-Route::put('seller/order/{idOrder}/{process}', [SellerController::class, 'processOrder']);
-
-Route::get('shipper/order', [ShipperController::class, 'viewOrderShipper']);
-Route::put('shipper/order/{idOrder}/{process}', [ShipperController::class, 'processOrder']);
+Route::get('shipper/order', [ShipperController::class, 'viewOrderShipper']); // Voir les commandes à livrer
+Route::put('shipper/order/{idOrder}/{process}', [ShipperController::class, 'processOrder']); // Traiter une commande ({process} = accept/refuse/shipped)

@@ -10,22 +10,25 @@ use App\Models\Order;
 
 class ClientController extends Controller
 {
-
     public function createprofile(Request $request){
         // create profile
-        $client = new Client;
-        $order = new Order;
+        $client = Client::find(1);
+        $order = Order::find(1);
         $client -> phone = $request ->phone;
         $client -> adresse = $request ->adresse;
         $client -> cart_id = $order -> id;
         $client -> save();
 
-        return "Informations saved";
+        return $client;
     }
 
     public function addproduct(Request $request){
         // Ajoute les produits aux panier
-
+        $order = Order::find(1);
+        $idProduct = $request -> idProduct;
+        $order -> product() -> attach($idProduct);
+        $order -> save();
+        return $order -> product;
     }
 
     public function validateOrder(){
@@ -43,6 +46,5 @@ class ClientController extends Controller
         // Consulter l'état de sa commande
         $order = Order::find(1);
         return $order -> state;
-
     }
 }
