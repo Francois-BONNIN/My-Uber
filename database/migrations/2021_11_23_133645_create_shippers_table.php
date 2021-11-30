@@ -16,6 +16,7 @@ class CreateShippersTable extends Migration
         Schema::create('shippers', function (Blueprint $table) {
             $table->id();
             $table->integer('seller_id');
+            $table->integer('order_id')->nullable();
             $table->string('name');
             $table->timestamps();
         });

@@ -8,7 +8,7 @@ class ShipperController extends Controller
 {
     public function viewOrderShipper(){
         // Voir les commandes seller_accept
-        $orders = Order::where('state', 'seller_ready');
+        $orders = Order::where('state', 'seller_ready')->get();
         return $orders;
     }
 

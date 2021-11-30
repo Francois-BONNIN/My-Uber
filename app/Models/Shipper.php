@@ -9,9 +9,12 @@ class Shipper extends Model
 {
     use HasFactory;
 
+    public function order(){
+        return $this->HasOne(Shipper::class);
+    }
 
     public function seller(){
-        return $this->BelongsTo(Seller::class);
+        return $this->HasOne(Seller::class);
     }
 
 }

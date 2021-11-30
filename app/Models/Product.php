@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-
-    public function cart(){
-        return $this->belongsToMany(Cart::class);
+    
+    public function order(){
+        return $this->belongsToMany(Order::class);
     }
 }

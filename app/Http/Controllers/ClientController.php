@@ -7,22 +7,23 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
+
 class ClientController extends Controller
 {
 
     public function createprofile(Request $request){
         // create profile
         $client = new Client;
-        $cart = new Cart;
+        $order = new Order;
         $client -> phone = $request ->phone;
         $client -> adresse = $request ->adresse;
-        $client -> cart_id = $cart -> id;
+        $client -> cart_id = $order -> id;
         $client -> save();
 
-        return "Informations saved, your ID Client : " + $client -> id;
+        return "Informations saved";
     }
 
-    public function addproduct($idClient, Request $request){
+    public function addproduct(Request $request){
         // Ajoute les produits aux panier
 
     }
@@ -31,15 +32,16 @@ class ClientController extends Controller
         // Validation de la commande par le client
 
         // Création de la commande à partir du panier
-
-        $order = new Order();
-        // order -> product = cart -> product
+        $order = Order::find(1);
+        $order -> validatebyClient = '1';
+        $order -> save();
+        return "Order validated";
 
     }
 
-    public function viewOrderClient($idClient){
+    public function viewOrderClient(){
         // Consulter l'état de sa commande
-        $order = Order::find($idClient);
+        $order = Order::find(1);
         return $order -> state;
 
     }

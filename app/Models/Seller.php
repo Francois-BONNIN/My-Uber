@@ -15,6 +15,6 @@ class Seller extends Model
     }
 
     public function shipper(){
-        return $this->HasOne(Shipper::class);
+        return $this->belongsTo(Shipper::class);
     }
 }

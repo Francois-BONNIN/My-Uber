@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,9 +16,9 @@ class ClientSeeder extends Seeder
      */
     public function run()
     {
-        $cart = Cart::create();
+        $order = Order::create();
         DB::table('clients')->insert([
-            'cart_id'=>$cart->id,
+            'cart_id'=>$order->id,
             'adresse'=> '2 place de la République, 31000',
             'phone'=> '0102030405',
         ]);
