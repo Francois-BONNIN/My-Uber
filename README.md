@@ -24,8 +24,8 @@
 #### Consulter l'état de sa commande :
 ```| GET|HEAD | api/clients/order/status       | App\Http\Controllers\ClientController@viewOrderClient   |```
 
+<hr>
 
-<br>
 ### API Restaurant :
 #### Voir les commandes passées par les clients :
 ```| GET|HEAD | api/seller/order                      | App\Http\Controllers\SellerController@viewOrderSeller   |```
@@ -33,7 +33,8 @@
 #### Traiter une commande ({process} = accept/refuse/ready) :
 ```| PUT      | api/seller/order/{idOrder}/{process}  | App\Http\Controllers\SellerController@processOrder      |```
 
-<br>
+<hr>
+
 ### API Livreur :
 #### Voir les commandes à livrer :
 ```| GET|HEAD | api/shipper/order                     | App\Http\Controllers\ShipperController@viewOrderShipper |```
