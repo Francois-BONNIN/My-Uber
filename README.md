@@ -12,11 +12,11 @@
 ## 3. Requêtes :
 
 #### Liste de tous les articles :
-```| GET|HEAD | api/products      | App\Http\Controllers\ProductController@listProducts   |```
+```| GET|HEAD | api/products                  | App\Http\Controllers\ProductController@listProducts     |```
 
 
 ### API Client :
-#### Ajouter des produits au panier (passer un produit en paramètre (format json)): 
+#### Ajouter des produits au panier (passer un produit en paramètre (format x-www-form-urlencoded)) : 
 ```| POST     | api/client/product            | App\Http\Controllers\ClientController@addproduct        |```
 
 #### Saisir l'adresse + numéro de téléphone (passer les arguments en paramètre (format x-www-form-urlencoded)) :
@@ -32,16 +32,18 @@
 
 ### API Restaurant :
 #### Voir les commandes passées par les clients :
-```| GET|HEAD | api/seller/order                      | App\Http\Controllers\SellerController@viewOrderSeller   |```
+```| GET|HEAD | api/seller/order              | App\Http\Controllers\SellerController@viewOrderSeller   |```
 
-#### Traiter une commande ({process} = accept/refuse/ready) :
-```| PUT      | api/seller/order/{idOrder}/{process}  | App\Http\Controllers\SellerController@processOrder      |```
+#### Traiter une commande (passer l'idOrder et le process en format x-www-form-urlencoded) :
+```| PUT      | api/seller/order/  | App\Http\Controllers\SellerController@processOrder      |```
+*process = accept/refuse/ready*
 
 <hr>
 
 ### API Livreur :
 #### Voir les commandes à livrer :
-```| GET|HEAD | api/shipper/order                     | App\Http\Controllers\ShipperController@viewOrderShipper |```
+```| GET|HEAD | api/shipper/order              | App\Http\Controllers\ShipperController@viewOrderShipper |```
 
-#### Traiter une commande ({process} = accept/refuse/shipped):
-```| PUT      | api/shipper/order/{idOrder}/{process} | App\Http\Controllers\ShipperController@processOrder     |```
+#### Traiter une commande ((passer l'idOrder et le process en format x-www-form-urlencoded):
+```| PUT      | api/shipper/order/ | App\Http\Controllers\ShipperController@processOrder     |```
+*process = accept/refuse/shipped*

@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
-
 class ClientController extends Controller
 {
     public function createprofile(Request $request){
-        // create profile
+        // Modification des informations du client
         $client = Client::find(1);
         $order = Order::find(1);
         $client -> phone = $request ->phone;
@@ -33,8 +31,6 @@ class ClientController extends Controller
 
     public function validateOrder(){
         // Validation de la commande par le client
-
-        // Création de la commande à partir du panier
         $order = Order::find(1);
         $order -> validatebyClient = '1';
         $order -> save();

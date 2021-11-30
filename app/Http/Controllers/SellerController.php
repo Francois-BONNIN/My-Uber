@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Seller;
 use App\Models\Order;
+use App\Models\Seller;
+use Illuminate\Http\Request;
+
+
 
 class SellerController extends Controller
 {
@@ -13,8 +16,24 @@ class SellerController extends Controller
         return $orders;
     }
 
-    public function processOrder($idOrder, $process){
+    public function processOrder(Request $request){
         // Traiter une commande
+
+        $order = Order::find($request -> idOrder);
+        switch ($request -> process) {
+            case "accept":
+                $order -> state = "seller_accept";
+                break;
+            case "refuse":
+                $order -> state = "seller_refuse";
+                break;
+            case "ready":
+                $order -> state = "seller_ready";
+                break;
+        }
+
+        $order -> save();
+        return "Order status : " .  $order ->state;
 
     }
 }

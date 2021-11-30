@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Http\Request;
+
 
 class ShipperController extends Controller
 {
@@ -12,7 +14,24 @@ class ShipperController extends Controller
         return $orders;
     }
 
-    public function processOrder($idOrder, $process){
+    public function processOrder(Request $request){
         // Traite une commande
+
+        $order = Order::find($request -> idOrder);
+        switch ($request -> process) {
+            case "accept":
+                $order -> state = "shipping_in_progress";
+                break;
+            case "refuse":
+                $order -> state = "seller_ready";
+                break;
+            case "shipped":
+                $order -> state = "shipped";
+                break;
+        }
+
+        $order -> save();
+        return "Order status : " . $order ->state;
+
     }
 }

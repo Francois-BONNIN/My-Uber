@@ -16,7 +16,7 @@ Route::post('client/order', [ClientController::class, 'validateOrder']); // Vali
 Route::get('client/order/status', [ClientController::class, 'viewOrderClient']); // Consulter l'état de sa commande
 
 Route::get('seller/order', [SellerController::class, 'viewOrderSeller']); // Voir les commandes passées par les clients
-Route::put('seller/order/{idOrder}/{process}', [SellerController::class, 'processOrder']); // Traiter une commande ({process} = accept/refuse/ready)
+Route::put('seller/order/', [SellerController::class, 'processOrder']); // Traiter une commande ({process} = accept/refuse/ready)
 
 Route::get('shipper/order', [ShipperController::class, 'viewOrderShipper']); // Voir les commandes à livrer
-Route::put('shipper/order/{idOrder}/{process}', [ShipperController::class, 'processOrder']); // Traiter une commande ({process} = accept/refuse/shipped)
+Route::put('shipper/order/', [ShipperController::class, 'processOrder']); // Traiter une commande ({process} = accept/refuse/shipped)
